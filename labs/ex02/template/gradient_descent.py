@@ -3,7 +3,10 @@
 
 Gradient Descent
 """
-
+### SOLUTION
+from costs import calculate_mse
+### TEMPLATE
+### END SOLUTION
 
 def compute_gradient(y, tx, w):
     """Computes the gradient at w.
@@ -16,11 +19,18 @@ def compute_gradient(y, tx, w):
     Returns:
         An array of shape (2, ) (same shape as w), containing the gradient of the loss at w.
     """
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # TODO: compute gradient vector
-    # ***************************************************
-    raise NotImplementedError
+    ### SOLUTION
+    err = y - tx.dot(w)
+    grad = -tx.T.dot(err) / len(err)
+    return grad, err
+
+    ### TEMPLATE
+    # # ***************************************************
+    # # INSERT YOUR CODE HERE
+    # # TODO: compute gradient vector
+    # # ***************************************************
+    # raise NotImplementedError
+    ### END SOLUTION
 
 
 def gradient_descent(y, tx, initial_w, max_iters, gamma):
@@ -42,16 +52,25 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
     losses = []
     w = initial_w
     for n_iter in range(max_iters):
-        # ***************************************************
-        # INSERT YOUR CODE HERE
-        # TODO: compute gradient and loss
-        # ***************************************************
-        raise NotImplementedError
-        # ***************************************************
-        # INSERT YOUR CODE HERE
-        # TODO: update w by gradient
-        # ***************************************************
-        raise NotImplementedError
+        ### SOLUTION
+        # compute loss, gradient
+        grad, err = compute_gradient(y, tx, w)
+        loss = calculate_mse(err)
+        # update w by gradient descent
+        w = w - gamma * grad
+
+        ### TEMPLATE
+        # # ***************************************************
+        # # INSERT YOUR CODE HERE
+        # # TODO: compute gradient and loss
+        # # ***************************************************
+        # raise NotImplementedError
+        # # ***************************************************
+        # # INSERT YOUR CODE HERE
+        # # TODO: update w by gradient
+        # # ***************************************************
+        # raise NotImplementedError
+        ### END SOLUTION
 
         # store w and loss
         ws.append(w)
